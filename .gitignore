@@ -9,3 +9,13 @@ build/
 *.log
 figures/*.png
 figures/*.pdf
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
