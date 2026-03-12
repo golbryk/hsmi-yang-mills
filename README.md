@@ -68,6 +68,26 @@ models.
 
 ---
 
+## Quick Start
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Reproduce key figures (Paper Psi)
+
+```bash
+python numerics/stokes_geometry_figure.py   # → papers/fig_stokes_2d_map.png (~ 3 min)
+python numerics/stokes_phase_detector.py    # → papers/fig_stokes_concentration.png (~ 10 min)
+python numerics/potts_stokes.py             # → console output: exact Ising/Potts zeros
+```
+
+Output data is saved to `data/` for replotting without recomputation.
+
+---
+
 ## Numerical Verification
 
 ### Core verification scripts (original)

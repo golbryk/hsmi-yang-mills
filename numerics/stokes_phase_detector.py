@@ -26,10 +26,11 @@ Figures saved to hsmi-yang-mills/papers/:
 import numpy as np
 import sys
 import time
+from pathlib import Path
 
 t0 = time.time()
 
-PAPER_DIR = '/home/golbryk/ai/toe/hsmi-yang-mills/papers'
+PAPER_DIR = Path(__file__).resolve().parents[1] / 'papers'
 
 
 # ===================================================================
@@ -725,6 +726,26 @@ for label, data in concentration_data.items():
     concentration_fits[label] = (alpha, R2, rate)
     print(f"  {label:>20s}: α = {alpha:.2f}, R² = {R2:.3f}, "
           f"exp rate = {rate:.4f}/N")
+
+# Save data to CSV for reproducible replotting
+DATA_DIR = Path(__file__).resolve().parents[1] / 'data'
+DATA_DIR.mkdir(exist_ok=True)
+
+csv_path = DATA_DIR / 'stokes_scaling.csv'
+with open(csv_path, 'w') as f:
+    f.write('model,N,mean_gap,std_gap,n_zeros\n')
+    for label, data in concentration_data.items():
+        for N, avg, std, nz in sorted(data):
+            f.write(f'{label},{N},{avg:.6e},{std:.6e},{nz}\n')
+
+fits_path = DATA_DIR / 'stokes_fits.csv'
+with open(fits_path, 'w') as f:
+    f.write('model,alpha,R2,exp_rate\n')
+    for label, (alpha, R2, rate) in concentration_fits.items():
+        f.write(f'{label},{alpha:.4f},{R2:.4f},{rate:.6f}\n')
+
+print(f"\n  Data saved: {csv_path}")
+print(f"  Fits saved: {fits_path}")
 
 
 # ===================================================================

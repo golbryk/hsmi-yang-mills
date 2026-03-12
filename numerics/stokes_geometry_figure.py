@@ -13,7 +13,10 @@ Date: 2026-03-10
 
 import numpy as np
 from itertools import combinations
+from pathlib import Path
 import sys, time
+
+PAPER_DIR = Path(__file__).resolve().parents[1] / 'papers'
 
 t0 = time.time()
 
@@ -308,7 +311,7 @@ if HAS_MPL:
     ax2.set_xlim(0, 25)
 
     plt.tight_layout()
-    fig_path = '/home/golbryk/ai/toe/hsmi-yang-mills/papers/fig_stokes_1d_overlay.png'
+    fig_path = str(PAPER_DIR / 'fig_stokes_1d_overlay.png')
     plt.savefig(fig_path, dpi=150, bbox_inches='tight')
     print(f"  Saved: {fig_path}")
     plt.close()
@@ -339,7 +342,7 @@ if HAS_MPL:
     ax.set_xlim(kappa_range[0], kappa_range[-1])
     ax.set_ylim(y_range[0], y_range[-1])
 
-    fig_path_2d = '/home/golbryk/ai/toe/hsmi-yang-mills/papers/fig_stokes_2d_map.png'
+    fig_path_2d = str(PAPER_DIR / 'fig_stokes_2d_map.png')
     plt.savefig(fig_path_2d, dpi=150, bbox_inches='tight')
     print(f"  Saved: {fig_path_2d}")
     plt.close()
@@ -394,7 +397,7 @@ if HAS_MPL:
     ax.set_xlim(0, 12)
 
     plt.tight_layout()
-    fig_path_ising = '/home/golbryk/ai/toe/hsmi-yang-mills/papers/fig_ising_stokes.png'
+    fig_path_ising = str(PAPER_DIR / 'fig_ising_stokes.png')
     plt.savefig(fig_path_ising, dpi=150, bbox_inches='tight')
     print(f"  Saved: {fig_path_ising}")
     plt.close()

@@ -190,6 +190,7 @@ def find_hk_zeros_approx(N, n_plaq, p_max, kappa, y_values):
 # ---------------------------------------------------------------------------
 
 def main():
+    np.random.seed(42)
     t0 = time.time()
 
     print()
