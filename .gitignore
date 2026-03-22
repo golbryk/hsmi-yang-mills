@@ -20,3 +20,9 @@ figures/*.pdf
 *.out
 *.synctex.gz
 *.toc
+
+# Mass gap exploration archive (dead-ends, 237 scripts)
+numerics/mass_gap_archive/
+
+# Internal workspace: checkpoints, drafts, data, audit docs
+workspace/

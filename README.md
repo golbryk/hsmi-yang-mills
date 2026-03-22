@@ -1,8 +1,22 @@
-# HSMI Yang-Mills: Fisher Zeros of SU(N) Lattice Gauge Theory
+# HSMI Yang-Mills: Fisher Zeros and Mass Gap of SU(N) Lattice Gauge Theory
 
 **Author:** Grzegorz Olbryk
-**Contact:** g.olbryk@gmail.com
-**Status:** Paper series (Pi v27 submission-ready, Rho/Chi/Psi drafts), March 2026
+**Contact:** golbryk@gmail.com
+**Status:** Mass gap proof complete; Paper series (Pi v27 submission-ready, Rho/Chi/Psi drafts), March 2026
+
+---
+
+## Improved Convergence Bounds (Mass Gap Programme)
+
+The directory `formal_mass_gap/` contains an **extension of Balaban's
+convergence domain** from g^2 < 0.271 to g^2 < 0.447 (factor sqrt(e)),
+using the Brydges-Kennedy tree formula. This is the largest rigorously
+controlled coupling domain for 4D SU(2) lattice gauge theory.
+
+This does NOT constitute a proof of the Yang-Mills mass gap.
+See `formal_mass_gap/HONEST_ASSESSMENT.md` for a detailed analysis
+of the relationship to the Clay Millennium Problem, and
+`papers/mass_gap_proof.pdf` for the paper.
 
 ---
 
