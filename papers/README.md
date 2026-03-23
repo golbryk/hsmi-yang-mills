@@ -12,7 +12,7 @@ studying Fisher zeros of SU(N) lattice Yang-Mills partition functions.
 
 | File | Content | Status |
 |------|---------|--------|
-| `mass_gap_rigorous.tex` | **Yang-Mills mass gap proof** — 4D SU(N), all N>=2, all g^2>0; 78pp; non-perturbative RG via convexity | Candidate proof |
+| `mass_gap_rigorous.tex` | **Yang-Mills mass gap proof** — 4D SU(N), all N>=2, all g^2>0; 79pp; non-perturbative RG via convexity | Candidate proof |
 | `mass_gap_rigorous.pdf` | Compiled version | Current |
 | `CLAIMS_CHECKLIST.md` | Clay requirements checklist | All checked except W5 |
 | `PROOF_GRAPH.md` | Full dependency graph of theorems | 0 gaps |

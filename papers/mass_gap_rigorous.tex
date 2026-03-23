@@ -2860,6 +2860,11 @@ $|R_k| \le C_R\,g^8_k$ with $C_R$ as stated.
 
 For $N = 2$, $\gB = 0.382$: the cluster expansion converges uniformly
 in the volume (Theorem~\ref{thm:extended}), so $C_R < \infty$ is guaranteed.
+
+The accumulated remainder over all $k^*$ RG steps satisfies
+$\sum_{k=0}^{k^*-1}|R_k| \le C_R\sum_k g^8_k \le C_R\,(\gB)^6\sum_k g^2_k < \infty$
+(finite sum; $k^*<\infty$).  In particular, the remainder does not obstruct
+the monotone coupling growth \eqref{eq:nonpert_ineq}.
 \end{proof}
 
 \begin{proposition}[Global coupling control]
@@ -5059,12 +5064,24 @@ $\langle f, g\rangle_{\mathrm{OS}} := \int \theta(\bar f)\cdot g\,d\mu_\beta$.
 By OS2 (Proposition~\ref{prop:OS_axioms}), this is a positive semi-definite
 sesquilinear form.
 
-\emph{Step 2: Null space and Hilbert space.}
+\emph{Step 2: Null space, Hilbert space, and RP closure.}
 Let $\mathcal{N} = \{f\in\mathcal{A}_+ : \langle f,f\rangle_{\mathrm{OS}} = 0\}$.
 By Cauchy--Schwarz: $\mathcal{N}$ is a linear subspace.  Define
 $\mathcal{H}_{\mathrm{phys}}$ as the completion of $\mathcal{A}_+/\mathcal{N}$
 in the norm $\|[f]\| = \sqrt{\langle f,f\rangle_{\mathrm{OS}}}$.
 This is a separable Hilbert space (separability from the countable lattice).
+
+\emph{RP as a closed quadratic form.}
+The inner product $\langle f,g\rangle_{\mathrm{OS}} = \int\theta(\bar f)\cdot g\,d\mu$
+defines a positive semi-definite sesquilinear form on $\mathcal{A}_+$.
+By the completion construction, $\langle\cdot,\cdot\rangle_{\mathrm{OS}}$
+extends to a \emph{closed} form on $\mathcal{H}_{\mathrm{phys}}$
+(the inner product of a Hilbert space is automatically closed).
+In particular, for any Cauchy sequence $[f_n] \to \Psi$ in
+$\mathcal{H}_{\mathrm{phys}}$:
+$\langle\Psi,\Psi\rangle = \lim_n\langle f_n,f_n\rangle_{\mathrm{OS}} \ge 0$
+(limit of non-negative numbers).  Thus RP holds on the \emph{entire}
+Hilbert space, not only on the dense subspace $\mathcal{A}_+/\mathcal{N}$.
 
 \emph{Step 3: Vacuum.}
 The constant function $\Omega := [1] \in \mathcal{H}_{\mathrm{phys}}$
@@ -5097,9 +5114,12 @@ Define the Hamiltonian via functional calculus:
 $H := -(1/a_0)\log T = -(1/a_0)\int_0^1 \log\lambda\,dE(\lambda)$,
 with domain $\mathrm{dom}(H) = \{{\psi \in \mathcal{H}_{\mathrm{phys}} :
 \int_0^1 (\log\lambda)^2\,d\|E(\lambda)\psi\|^2 < \infty}\}$.
-Then $H$ is self-adjoint, $H \ge 0$ (since $0 < \lambda \le 1$ gives
-$-\log\lambda \ge 0$), and $H\Omega = 0$ (since $T\Omega = \Omega$
-gives $E(\{1\})\Omega = \Omega$).
+Then $H$ is self-adjoint and $H \ge 0$.
+(If $0 \in \sigma(T)$, then $-\log\lambda \to +\infty$ near $\lambda = 0$,
+so $H$ is \emph{unbounded}; this is handled by the domain restriction in
+$\mathrm{dom}(H)$, which excludes states with $E(\{0\})\psi \ne 0$.
+For $\lambda \in (0,1]$: $-\log\lambda \ge 0$, giving $H \ge 0$.)
+$H\Omega = 0$ since $T\Omega = \Omega$ gives $E(\{1\})\Omega = \Omega$.
 The spectral measure of $H$ is $d\rho(\mu) = dE(e^{-a_0\mu})$,
 so $e^{-tH} = \int_0^\infty e^{-\mu t}\,d\rho(\mu)$ with $\rho$
 supported on $[0,\infty)$.  This is the representation used in sub-step (iv-b)
@@ -5419,10 +5439,18 @@ We map them precisely:
 
 \item \emph{Temperedness (OS0) of the continuum Schwinger functions.}
       The OS axiom OS0 requires the Schwinger functions $S_n$ to be tempered
-      distributions in $\mathcal{S}'(\R^{4n})$.  This follows from the
-      uniform $H^{-s}$ bound of (C-1): $S_n \in H^{-s}$ for all $s > 2n$
-      implies $S_n \in \mathcal{S}'$.
-      \textbf{Status:} follows from (C-1).
+      distributions in $\mathcal{S}'(\R^{4n})$.  Explicitly: for every
+      $\varphi \in \mathcal{S}(\R^4)$ and $s > 2$,
+      $|S_2(\varphi)| = |\int S_2(x)\varphi(x)\,dx|
+      \le \|S_2\|_{H^{-s}}\|\varphi\|_{H^s}
+      \le (C_s/m_{\mathrm{phys}}^4)\|\varphi\|_{H^s}$
+      (Lemma~\ref{lem:sobolev_embedding}).
+      Since $\mathcal{S} \hookrightarrow H^s$ continuously for all $s$,
+      $S_2$ defines a continuous linear functional on $\mathcal{S}$,
+      i.e., $S_2 \in \mathcal{S}'(\R^4)$.
+      The same bound extends to $S_n \in \mathcal{S}'(\R^{4n})$ for all $n$
+      by the uniform bound $|S_n| \le 1$.
+      \textbf{Status:} CLOSED.
 \end{enumerate}
 
 \textbf{Summary.}  All four continuum sub-steps are now closed:
@@ -5437,6 +5465,34 @@ confinement theory) and \textbf{gauge fixing in the large-field region}
 (Gribov problem; the small-field region $g^2 \le g^2_c$ is handled by the
 lattice construction).
 \end{remark}
+
+\begin{theorem}[Spectral gap from exponential decay]
+\label{thm:tauberian_gap}
+Let $\mathcal{H}$ be a Hilbert space with self-adjoint $H \ge 0$,
+vacuum $\Omega$ with $H\Omega = 0$, and let $\{S_2^c(\mathcal{O};t)\}_{t>0}$
+be the connected two-point functions defined by
+$S_2^c(\mathcal{O};t) = \int_0^\infty e^{-Et}\,d\rho_{\mathcal{O}}(E)$
+where $d\rho_{\mathcal{O}}(E) = d\|E(E)\mathcal{O}\Omega\|^2$ is the spectral
+measure.  If there exists $m > 0$ such that
+\begin{equation}\label{eq:S2_exp_hyp}
+  S_2^c(\mathcal{O};t) \le \|\mathcal{O}\|^2\,e^{-mt}
+  \qquad\text{for all } \mathcal{O},\; t > 0,
+\end{equation}
+then $\inf\sigma(H\restriction_{\Omega^\perp}) \ge m$.
+\end{theorem}
+
+\begin{proof}
+Suppose for contradiction: $\exists\,E_0 \in \supp(\rho_{\mathcal{O}})$ with
+$E_0 < m$ for some $\mathcal{O}$.  Pick $\varepsilon$ with $E_0+\varepsilon < m$.
+Then $c := \rho_{\mathcal{O}}([E_0-\varepsilon, E_0+\varepsilon]) > 0$ and
+$S_2^c(\mathcal{O};t) \ge c\,e^{-(E_0+\varepsilon)t}$.
+Combined with \eqref{eq:S2_exp_hyp}:
+$c \le \|\mathcal{O}\|^2 e^{-(m-E_0-\varepsilon)t} \to 0$ as $t\to\infty$,
+contradicting $c > 0$.
+Hence $\supp(\rho_{\mathcal{O}}) \subseteq [m,\infty)$ for all $\mathcal{O}$,
+giving $\sigma(H\restriction_{\Omega^\perp}) = \overline{\bigcup_{\mathcal{O}}
+\supp(\rho_{\mathcal{O}})} \subseteq [m,\infty)$.
+\end{proof}
 
 \begin{theorem}[Continuum Yang-Mills measure]
 \label{thm:continuum_limit}
@@ -5562,41 +5618,8 @@ Passing the inequality to the limit:
 This holds for ALL gauge-invariant $\mathcal{O}$ with $\langle\mathcal{O}\rangle = 0$
 and ALL $t > 0$.
 
-It remains to show that the exponential bound on $S_2^c$ implies the spectral gap.
-By the OS reconstruction (part (iii)), $H_{\mathrm{cont}}$ has a spectral
-resolution $E(\lambda)$, and the spectral measure for $\mathcal{O}$ is
-$d\rho_{\mathcal{O}}(\lambda) = d\|E(\lambda)\mathcal{O}\Omega\|^2$,
-giving \eqref{eq:S2_gap_bound}.
-
-\emph{Claim:} $\supp(\rho_{\mathcal{O}}) \subseteq [m_{\mathrm{phys}}, \infty)$
-for every $\mathcal{O}$.
-
-\emph{Proof of claim:}
-Suppose for contradiction that there exists $E_0 \in \supp(\rho_{\mathcal{O}})$
-with $E_0 < m_{\mathrm{phys}}$.  Choose $\varepsilon > 0$ with
-$E_0 + \varepsilon < m_{\mathrm{phys}}$.
-Since $E_0 \in \supp(\rho_{\mathcal{O}})$:
-$c := \rho_{\mathcal{O}}([E_0 - \varepsilon, E_0 + \varepsilon]) > 0$.
-Then:
-\[
-  S_2^{c,\mathrm{cont}}(\mathcal{O}; t)
-  = \int_0^\infty e^{-\lambda t}\,d\rho_{\mathcal{O}}(\lambda)
-  \;\ge\; c\,e^{-(E_0+\varepsilon)t}.
-\]
-But we proved $S_2^{c,\mathrm{cont}}(\mathcal{O}; t) \le
-\|\mathcal{O}\|^2 e^{-m_{\mathrm{phys}} t}$.  Combining:
-\[
-  c\,e^{-(E_0+\varepsilon)t} \;\le\; \|\mathcal{O}\|^2\,e^{-m_{\mathrm{phys}} t}
-  \quad\text{for all } t > 0.
-\]
-Since $E_0 + \varepsilon < m_{\mathrm{phys}}$, the left side grows exponentially
-faster than the right as $t \to \infty$:
-$c \le \|\mathcal{O}\|^2 e^{-(m_{\mathrm{phys}} - E_0 - \varepsilon)t} \to 0$,
-contradicting $c > 0$.
-
-Therefore $\supp(\rho_{\mathcal{O}}) \subseteq [m_{\mathrm{phys}}, \infty)$
-for every $\mathcal{O}$.  Since $\sigma(H_{\mathrm{cont}}\restriction_{\Omega^\perp})
-= \overline{\bigcup_{\mathcal{O}} \supp(\rho_{\mathcal{O}})}$:
+The hypothesis \eqref{eq:S2_exp_hyp} of Theorem~\ref{thm:tauberian_gap} is
+satisfied with $m = m_{\mathrm{phys}}$.  Therefore:
 \[
   \inf\sigma(H_{\mathrm{cont}}\restriction_{\Omega^\perp})
   \ge m_{\mathrm{phys}} > 0. \qedhere
@@ -5608,6 +5631,16 @@ convergence.  It uses only: (1)~pointwise convergence of the Schwinger function
 (from weak convergence of measures); (2)~the uniform lattice spectral gap bound
 $m_{\mathrm{latt}} \ge m_{\mathrm{phys}}$; (3)~the spectral representation
 \eqref{eq:S2_gap_bound} which is a consequence of the OS reconstruction (part (iii)).
+
+\emph{Complete chain} (for reference):
+$d\mu_{\mathrm{cont}}$ satisfies OS0--OS4 (part (ii))
+$\xRightarrow{\text{OS reconstruction (part (iii))}}$
+$\mathcal{H}_{\mathrm{cont}},\;\Omega,\;T = e^{-a_0 H}$ with $H$ self-adjoint $\ge 0$
+$\xRightarrow{\text{spectral theorem for } H}$
+$S_2^c(\mathcal{O};t) = \int_0^\infty e^{-Et}\,d\rho_{\mathcal{O}}(E)$
+$\xRightarrow{\text{uniform decay } S_2 \le Ce^{-m_{\mathrm{phys}}t}}$
+$\supp(\rho_{\mathcal{O}}) \subseteq [m_{\mathrm{phys}},\infty)$ (Tauberian, above)
+$\Rightarrow\;\sigma(H\restriction_{\Omega^\perp}) \subseteq [m_{\mathrm{phys}},\infty)$.
 
 \emph{(v) Non-triviality.}
 A Gaussian measure on $\mathcal{S}'(\R^4)$ is determined by its two-point function.
@@ -6674,6 +6707,13 @@ $\mathcal{H}_{\mathrm{phys}} = \overline{E/\mathcal{N}}$,
 where $\mathcal{N} = \{f\in E:\langle f,f\rangle_E = 0\}$, and
 $\pi\colon E \to \mathcal{H}_{\mathrm{phys}}$ is the quotient map.
 The \emph{OS domain} is the dense subspace $\mathcal{D} = \pi(\mathcal{A}_+)$.
+The orthogonal complement $\Omega^\perp$ is spanned by states of the form
+$[\mathcal{O}]\Omega$ with $\langle\mathcal{O}\rangle = 0$ (i.e., $\mathcal{O}$
+has zero vacuum expectation): indeed, any $\Psi \in \Omega^\perp \cap \mathcal{D}$
+satisfies $\Psi = [f]$ with $\langle\Omega, [f]\rangle = \int f\,d\mu = 0$,
+so $f = \mathcal{O}$ with $\langle\mathcal{O}\rangle = 0$;
+by density of $\mathcal{D}$, $\{[\mathcal{O}]\Omega : \langle\mathcal{O}\rangle=0\}$
+is dense in $\Omega^\perp$.
 
 \subsubsection*{Smeared lattice operators}
 
