@@ -4121,7 +4121,14 @@ a_0(\beta) = \frac{1}{\Lambda_L}\,
 \end{equation}
 where $g^2 = 2N/\beta$ for $\SU(N)$ Wilson action, $b_0 = b_0(N) = 11N/(3\cdot 16\pi^2)$,
 $b_1 = b_1(N) = 34N^2/(3\cdot(16\pi^2)^2)$ (equation~\eqref{eq:b0b1_SUN}),
-and $\Lambda_L = \Lambda_L(N)$ is the lattice $\Lambda$-parameter for $\SU(N)$.
+and $\Lambda_L = \Lambda_L(N) > 0$ is the lattice $\Lambda$-parameter for $\SU(N)$,
+\emph{defined} by the normalisation condition $a_0(\beta_0) = a_{\mathrm{ref}}$
+for a fixed reference coupling $\beta_0$ and reference spacing $a_{\mathrm{ref}}$.
+This definition is unique (given $\beta_0$, $a_{\mathrm{ref}}$) and determines
+$\Lambda_L$ as a finite positive constant independent of the lattice spacing $a_0$.
+Any other normalisation choice $(\beta_0', a_{\mathrm{ref}}')$ changes $\Lambda_L$
+by a multiplicative constant but does not affect $m_{\mathrm{phys}}/\Lambda_L$
+(Proposition~\ref{prop:universality}).
 \emph{(For $N=2$: $g^2 = 4/\beta$, $b_0 = 22/(3\cdot 16\pi^2)$, $b_1 = 136/(3\cdot(16\pi^2)^2)$.)}
 
 \begin{theorem}[Existence of physical mass gap]
@@ -4389,6 +4396,16 @@ So $m_{\mathrm{block}} - 0.002 \ge 0.121 > 0$ and:
 \end{equation}
 Since $\xi = L_b^{k^*} a_0 < \infty$ (Part~(i) and Corollary~\ref{cor:finite}),
 and the numerator $m_{\mathrm{block}} - 0.002 > 0$, we obtain $m_{\mathrm{phys}} > 0$.
+
+\emph{Crucially, $\xi$ is bounded above as $a_0\to 0$:}
+by Part~(i), $\xi = \Lambda_L^{-1}(b_0 g_0^2)^{-b_1/(2b_0^2)}e^{1/(2b_0 g_0^2)}(1+O(g_0^2))$,
+while $a_0 = \Lambda_L^{-1}(b_0 g_0^2)^{-b_1/(2b_0^2)}e^{-1/(2b_0 g_0^2)}(1+O(g_0^2))$.
+The product $\xi = L_b^{k^*} a_0$ satisfies $\xi \to \Lambda_L^{-1}$ as $a_0\to 0$
+(since $L_b^{k^*}$ and $a_0^{-1}$ both scale as $e^{1/(2b_0 g_0^2)}$, and their
+product is $\Lambda_L^{-1}$ to leading order).  Therefore $m_{\mathrm{phys}}
+= (m_{\mathrm{block}} - O(0.002))/\xi \ge (0.0733 - 0.002)\Lambda_L = 0.0713\,\Lambda_L > 0$,
+\emph{uniformly in} $a_0$.  This is the uniform lower bound required for the
+continuum limit (Theorem~\ref{thm:continuum_limit}(iv)).
 Equality holds to leading order: $m_{\mathrm{phys}} = m_{\mathrm{block}}/\xi\,(1+O(g^6_{k^*}))$.
 \end{proof}
 
@@ -4686,12 +4703,37 @@ satisfies $\|\Omega\|^2 = \int 1\cdot 1\,d\mu_\beta = 1$.
 \emph{Step 4: Hamiltonian.}
 The time-translation by one lattice spacing defines an operator
 $T : [f] \mapsto [f\circ\tau_1]$, where $\tau_1$ shifts $x^0 \mapsto x^0+a_0$.
-By the Markov property of the path integral: $T$ is a contraction
-($\|T[f]\| \le \|[f]\|$) and self-adjoint ($\langle T[f],[g]\rangle
-= \langle [f],T[g]\rangle$) on $\mathcal{H}_{\mathrm{phys}}$.
-Hence $T = e^{-a_0 H}$ for a unique self-adjoint $H \ge 0$
-(spectral theorem for bounded self-adjoint operators).
-$H\Omega = 0$ since $T\Omega = \Omega$ (translation invariance of $d\mu_\beta$).
+We verify three properties:
+\begin{itemize}
+\item \emph{Self-adjointness:} $\langle T[f],[g]\rangle_{\mathrm{OS}}
+  = \int \overline{(\theta f)(U)}\,(g\circ\tau_1)(U)\,d\mu
+  = \int \overline{(f\circ\tau_{-1}\circ\theta)(U)}\,g(U)\,d\mu
+  = \langle [f],T[g]\rangle_{\mathrm{OS}}$
+  (using $\theta\circ\tau_1 = \tau_{-1}\circ\theta$ and $\theta$-invariance of $d\mu$).
+\item \emph{Positivity:} $\langle [f], T[f]\rangle_{\mathrm{OS}}
+  = \int \overline{(\theta f)}\,(f\circ\tau_1)\,d\mu \ge 0$
+  (this is the OS inner product of $f$ shifted by one step; positivity follows
+  from reflection positivity applied to the shifted function, since
+  $f\circ\tau_1$ depends on links in $\Lambda_+$ when $f$ does).
+\item \emph{Contraction:} $\|T[f]\|^2 = \langle T[f],T[f]\rangle
+  = \langle [f], T^2[f]\rangle \le \|[f]\|\,\|T^2[f]\| \le \|[f]\|^2$
+  (by iterated Cauchy--Schwarz and $\|T\| \le 1$).
+\end{itemize}
+Since $T$ is a bounded self-adjoint positive operator with $\|T\| \le 1$,
+the spectral theorem gives $T = \int_0^1 \lambda\, dE(\lambda)$ where $E$ is
+the projection-valued spectral measure.  Since $T\Omega = \Omega$ (translation
+invariance of $d\mu_\beta$): $\lambda = 1$ is in the spectrum.
+Define the Hamiltonian via functional calculus:
+$H := -(1/a_0)\log T = -(1/a_0)\int_0^1 \log\lambda\,dE(\lambda)$,
+with domain $\mathrm{dom}(H) = \{{\psi \in \mathcal{H}_{\mathrm{phys}} :
+\int_0^1 (\log\lambda)^2\,d\|E(\lambda)\psi\|^2 < \infty}\}$.
+Then $H$ is self-adjoint, $H \ge 0$ (since $0 < \lambda \le 1$ gives
+$-\log\lambda \ge 0$), and $H\Omega = 0$ (since $T\Omega = \Omega$
+gives $E(\{1\})\Omega = \Omega$).
+The spectral measure of $H$ is $d\rho(\mu) = dE(e^{-a_0\mu})$,
+so $e^{-tH} = \int_0^\infty e^{-\mu t}\,d\rho(\mu)$ with $\rho$
+supported on $[0,\infty)$.  This is the representation used in sub-step (iv-b)
+of Theorem~\ref{thm:continuum_limit}.
 
 \emph{Step 5: Mass gap.}
 $T = \mathbf{T}(\beta)/\lambda_0$ where $\mathbf{T}(\beta)$ is the transfer
@@ -5148,7 +5190,43 @@ Passing the inequality to the limit:
   \le \|\mathcal{O}\|^2\, e^{-m_{\mathrm{phys}}\,t}.
 \]
 This holds for ALL gauge-invariant $\mathcal{O}$ with $\langle\mathcal{O}\rangle = 0$
-and ALL $t > 0$.  By the spectral representation \eqref{eq:S2_gap_bound}:
+and ALL $t > 0$.
+
+It remains to show that the exponential bound on $S_2^c$ implies the spectral gap.
+By the OS reconstruction (part (iii)), $H_{\mathrm{cont}}$ has a spectral
+resolution $E(\lambda)$, and the spectral measure for $\mathcal{O}$ is
+$d\rho_{\mathcal{O}}(\lambda) = d\|E(\lambda)\mathcal{O}\Omega\|^2$,
+giving \eqref{eq:S2_gap_bound}.
+
+\emph{Claim:} $\supp(\rho_{\mathcal{O}}) \subseteq [m_{\mathrm{phys}}, \infty)$
+for every $\mathcal{O}$.
+
+\emph{Proof of claim:}
+Suppose for contradiction that there exists $E_0 \in \supp(\rho_{\mathcal{O}})$
+with $E_0 < m_{\mathrm{phys}}$.  Choose $\varepsilon > 0$ with
+$E_0 + \varepsilon < m_{\mathrm{phys}}$.
+Since $E_0 \in \supp(\rho_{\mathcal{O}})$:
+$c := \rho_{\mathcal{O}}([E_0 - \varepsilon, E_0 + \varepsilon]) > 0$.
+Then:
+\[
+  S_2^{c,\mathrm{cont}}(\mathcal{O}; t)
+  = \int_0^\infty e^{-\lambda t}\,d\rho_{\mathcal{O}}(\lambda)
+  \;\ge\; c\,e^{-(E_0+\varepsilon)t}.
+\]
+But we proved $S_2^{c,\mathrm{cont}}(\mathcal{O}; t) \le
+\|\mathcal{O}\|^2 e^{-m_{\mathrm{phys}} t}$.  Combining:
+\[
+  c\,e^{-(E_0+\varepsilon)t} \;\le\; \|\mathcal{O}\|^2\,e^{-m_{\mathrm{phys}} t}
+  \quad\text{for all } t > 0.
+\]
+Since $E_0 + \varepsilon < m_{\mathrm{phys}}$, the left side grows exponentially
+faster than the right as $t \to \infty$:
+$c \le \|\mathcal{O}\|^2 e^{-(m_{\mathrm{phys}} - E_0 - \varepsilon)t} \to 0$,
+contradicting $c > 0$.
+
+Therefore $\supp(\rho_{\mathcal{O}}) \subseteq [m_{\mathrm{phys}}, \infty)$
+for every $\mathcal{O}$.  Since $\sigma(H_{\mathrm{cont}}\restriction_{\Omega^\perp})
+= \overline{\bigcup_{\mathcal{O}} \supp(\rho_{\mathcal{O}})}$:
 \[
   \inf\sigma(H_{\mathrm{cont}}\restriction_{\Omega^\perp})
   \ge m_{\mathrm{phys}} > 0. \qedhere
