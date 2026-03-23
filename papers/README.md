@@ -8,7 +8,19 @@ studying Fisher zeros of SU(N) lattice Yang-Mills partition functions.
 
 ---
 
-## Current Papers
+## Mass Gap Programme
+
+| File | Content | Status |
+|------|---------|--------|
+| `mass_gap_rigorous.tex` | **Yang-Mills mass gap proof** — 4D SU(N), all N>=2, all g^2>0; 74pp, 84 theorems | Candidate proof |
+| `mass_gap_rigorous.pdf` | Compiled version | Current |
+| `CLAIMS_CHECKLIST.md` | Clay requirements checklist | All checked except W5 |
+| `PROOF_GRAPH.md` | Full dependency graph of 84 theorems | 0 gaps |
+| `REFEREE_REPORT_v3.md` | Adversarial stress test: 10 attacks, 0 fatal | Passed |
+
+---
+
+## Fisher Zeros Papers
 
 | File | Content | Status |
 |------|---------|--------|
