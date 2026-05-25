@@ -229,7 +229,9 @@ mathematical engine behind the **Stokes–RG correspondence** developed in a
 separate, independent repository:
 
 - **global-spectral-toe** — https://github.com/golbryk/global-spectral-toe
-  (Zenodo record, Version 2: DOI [10.5281/zenodo.18213696](https://doi.org/10.5281/zenodo.18213696)).
+  (latest public synthesis — *Global Spectral Theory of Everything — Version 3*,
+  DOI [10.5281/zenodo.20374769](https://doi.org/10.5281/zenodo.20374769);
+  previous Version 2: DOI [10.5281/zenodo.18213696](https://doi.org/10.5281/zenodo.18213696)).
 
 That repository is a *foundational/relational* programme; this repository is
 self-contained rigorous mathematical physics (lattice gauge theory). The two
