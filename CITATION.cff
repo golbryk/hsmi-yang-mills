@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "HSMI Yang-Mills: Fisher Zeros and Mass Gap of SU(N) Lattice Gauge Theory"
+authors:
+  - family-names: "Olbryk"
+    given-names: "Grzegorz"
+    email: "g.olbryk@gmail.com"
+type: software
+repository-code: "https://github.com/golbryk/hsmi-yang-mills"
+abstract: >-
+  A rigorous mathematical-physics programme on SU(N) lattice Yang-Mills:
+  (i) a candidate rigorous proof of the 4D SU(2) Yang-Mills mass gap
+  (referee-hardened; W5 and large-field Gribov open), and (ii) the Fisher
+  zero programme (unified spacing theorem, infinitude for N = 0 mod 4, and
+  Stokes concentration). No quantum-gravity or Theory-of-Everything claim
+  is made.
+keywords:
+  - lattice gauge theory
+  - Yang-Mills mass gap
+  - Fisher zeros
+  - Lee-Yang zeros
+  - Stokes phenomena
+  - SU(N)
+license: MIT
+# No Zenodo DOI is minted for this repository. The companion foundational
+# programme has a separate Zenodo record (Version 2):
+references:
+  - type: software
+    title: "Global Spectral Theory of Everything (companion repository)"
+    authors:
+      - family-names: "Olbryk"
+        given-names: "Grzegorz"
+    repository-code: "https://github.com/golbryk/global-spectral-toe"
+    doi: "10.5281/zenodo.18213696"

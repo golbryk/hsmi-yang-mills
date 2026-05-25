@@ -2,15 +2,17 @@
 
 **Author:** Grzegorz Olbryk
 **Contact:** golbryk@gmail.com
-**Status:** Mass gap proof complete (66pp); Fisher zeros paper series (Pi v27 submission-ready, Rho/Chi/Psi drafts), March 2026
+**Status:** Yang-Mills mass gap — *candidate proof* (79pp, referee-hardened, adversarial audit passed; W5 and large-field Gribov open); Fisher zeros paper series (Pi v27 submission-ready, Rho/Chi/Psi drafts), 2026
 
 ---
 
 ## Yang-Mills Mass Gap (Clay Millennium Prize Problem)
 
-The file `papers/mass_gap_rigorous.tex` (66 pages, compiled PDF:
-`papers/mass_gap_rigorous.pdf`) contains a **rigorous proof of the
-Yang-Mills mass gap** for SU(2) lattice gauge theory in 4D.
+The file `papers/mass_gap_rigorous.tex` (79 pages, compiled PDF:
+`papers/mass_gap_rigorous.pdf`) contains a **candidate rigorous proof of
+the Yang-Mills mass gap** for SU(2) lattice gauge theory in 4D
+(referee-hardened; adversarial audit passed; W5 and large-field Gribov
+remain open — see open items below).
 
 ### Main result
 
@@ -217,6 +219,25 @@ This is a rigorous mathematical physics programme consisting of two parts:
   Target: *J. Math. Phys.*, *J. Stat. Phys.*, *Ann. Henri Poincaré.*
 - **What is not claimed:** connection to quantum gravity, Riemann hypothesis,
   or phenomenological QCD beyond the mass gap.
+
+---
+
+## Companion Repository
+
+The Stokes concentration result of this programme (Paper Psi) is the
+mathematical engine behind the **Stokes–RG correspondence** developed in a
+separate, independent repository:
+
+- **global-spectral-toe** — https://github.com/golbryk/global-spectral-toe
+  (Zenodo record, Version 2: DOI [10.5281/zenodo.18213696](https://doi.org/10.5281/zenodo.18213696)).
+
+That repository is a *foundational/relational* programme; this repository is
+self-contained rigorous mathematical physics (lattice gauge theory). The two
+are related only through the Stokes/Fisher-zero machinery — there is no
+logical dependency of the mass-gap or Fisher-zero results on the foundational
+programme, and no quantum-gravity or Theory-of-Everything claim is made here.
+
+A machine-readable citation entry is provided in `CITATION.cff`.
 
 ---
 
