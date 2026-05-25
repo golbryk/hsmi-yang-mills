@@ -87,7 +87,7 @@ models.
 
 | Paper | Content | Status |
 |-------|---------|--------|
-| **mass_gap_rigorous** | Yang-Mills mass gap proof, W0-W4, Clay mapping | **Complete (66pp)** |
+| **mass_gap_rigorous** | Yang-Mills mass gap proof, W0-W4, Clay mapping | **Candidate proof (79pp; W5 + large-field Gribov open)** |
 | **Pi v27** | Two-plaquette ⟨Δ⟩ = π/2, N odd, all κ > 0 | Submission-ready |
 | **Rho** | Unified ⟨Δ⟩ = π/(n\|Φ₀\|), all N with \|Φ₀\| ≠ 0, all n | Draft |
 | **Chi** | N ≡ 0 mod 4: infinitude, conveyor belt, action comparison | Draft |
@@ -165,7 +165,7 @@ no GPU needed. matplotlib for figure generation.
 
 ```
 papers/
-  mass_gap_rigorous.tex      — Yang-Mills mass gap proof (Clay Millennium, 66pp)
+  mass_gap_rigorous.tex      — Yang-Mills mass gap candidate proof (Clay Millennium, 79pp)
   mass_gap_rigorous.pdf      — Compiled PDF
   workspace/                 — Planning docs, proof dependency maps, continuum plan
   paper_Rho.tex              — Unified Fisher zero theorem (draft)
@@ -211,7 +211,7 @@ All three open problems from Pi v16 are now resolved:
 
 This is a rigorous mathematical physics programme consisting of two parts:
 
-- **Mass gap proof** (`mass_gap_rigorous.tex`): SU(2) Yang-Mills mass gap for
+- **Mass gap candidate proof** (`mass_gap_rigorous.tex`): SU(2) Yang-Mills mass gap for
   4D lattice gauge theory, with continuum reconstruction to Wightman axioms W0-W4.
   Target: *Annals of Mathematics*, *Comm. Math. Phys.*, *Invent. Math.*
 - **Fisher zero programme**: Distribution of Fisher zeros for SU(N) lattice
